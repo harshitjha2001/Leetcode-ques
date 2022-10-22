@@ -4,18 +4,16 @@ class Solution
         int maxProfit(vector<int> &prices)
         {
 
-            int min = INT_MAX/10;
-            int max = 0;
+            int n = prices.size();
+            int profit = 0, pointer = prices[0];
 
-            for (int i = 0; i < prices.size(); i++)
+            for (int i = 1; i < n; i++)
             {
-                if (prices[i] < min)
-                    min = prices[i];
+                if (prices[i] < pointer) pointer = prices[i];
 
-                if (prices[i] - min > max)
-                    max = prices[i] - min;
+                else profit = max(profit, prices[i] - pointer);
             }
 
-            return max;
+            return profit;
         }
 };
