@@ -41,6 +41,7 @@ class Solution
        
       int pivot=arr[high];
       int i=low-1;
+      
       for(int j=low;j<high ;j++)
       {
           if(arr[j]<=pivot)
@@ -52,6 +53,7 @@ class Solution
        
       swap(arr,i+1,high);
       return i+1;
+    
     }
     
     
