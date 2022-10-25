@@ -13,10 +13,8 @@ class Solution
             while (i >= 0 && nums[i] >= nums[i + 1])
                 i--;
 
-            if(i<0)
-                reverse(nums.begin(),nums.end());
             
-            else
+           if(i>=0)
             {
                 int j = nums.size() - 1;
 
@@ -24,9 +22,9 @@ class Solution
                     j--;
 
                 swap(nums[i], nums[j]);
-                
-                reverse(nums.begin()+i+1, nums.end());
             }
+            
+              reverse(nums.begin()+i+1, nums.end());
 
             
         }
