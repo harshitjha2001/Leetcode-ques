@@ -1,37 +1,57 @@
-class Solution
-{
-    public:
-        vector<int> searchRange(vector<int> &nums, int target)
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& arr, int target) {
+        vector<int> res(2,-1);
+        
+        int si=0;
+        int ei=arr.size()-1;
+        
+        
+        while(si<=ei)  //for first occurence
         {
-
-            vector<int> res(2, -1);
-            int start = 0, mid = 0, end = nums.size() - 1;
-
-            while (start <= end)
+            int mid=(si+ei)/2;
+            if(arr[mid]==target)
             {
-                mid = start + (end - start) / 2;
-                if (nums[mid] < target)
-                    start = mid + 1;
-                else
-                {
-                    if (nums[mid] == target)
-                        res[0] = mid;
-                    end = mid - 1;
-                }
+                res[0]=mid;
+                ei=mid-1;
             }
-            start = 0, end = nums.size() - 1;
-            while (start <= end)
+            
+            else if(arr[mid]<target)
             {
-                mid = start + (end - start) / 2;
-                if (nums[mid] > target)
-                    end = mid - 1;
-                else
-                {
-                    if (nums[mid] == target)
-                        res[1] = mid;
-                    start = mid + 1;
-                }
+                si=mid+1;
             }
-            return res;
+            
+            else{
+                ei=mid-1;
+            }
         }
+        
+        
+        si=0;
+        ei=arr.size()-1;
+        
+        while(si<=ei)
+        {
+            int mid=(si+ei)/2;
+            
+            if(arr[mid]==target)
+            {
+                res[1]=mid;
+                si=mid+1;
+            }
+            
+            else if(arr[mid]>target)
+            {
+                ei=mid-1;
+            }
+            
+            else{
+                si=mid+1;
+            }
+            
+        }
+        
+        return res;
+        
+    }
 };
