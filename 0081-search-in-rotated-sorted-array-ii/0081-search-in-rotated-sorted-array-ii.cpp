@@ -1,39 +1,36 @@
 class Solution {
 public:
     bool search(vector<int>& nums, int target) {
-        int l = 0;
-        int r = nums.size() - 1;
         
-        while(l <= r)
+        int si = 0;
+        int ei = nums.size() - 1;
+        
+        while(si <= ei)
         {
-            int mid = l + (r-l) / 2;
+            int mid = si + (ei-si) / 2;
             if (nums[mid] == target)
                 return true;
-			// with duplicates we can have this contdition, just update left & right
-            if((nums[l] == nums[mid]) && (nums[r] == nums[mid]))
+			
+            if((nums[si] == nums[mid]) && (nums[ei] == nums[mid]))//duplicate
             {
-                l++;
-                r--;
+                si++;
+                ei--;
             }
-			// first half
-			// first half is in order
-            else if(nums[l] <= nums[mid])
+			
+            else if(nums[si] <= nums[mid])
             {
-				// target is in first  half
-                if((nums[l] <= target) && (nums[mid] > target))
-                    r = mid - 1;
+                if((nums[si] <= target) && (nums[mid] > target))
+                    ei = mid - 1;
                 else
-                    l = mid + 1;
+                    si = mid + 1;
             }
-			// second half
-			// second half is order
-			// target is in second half
+			
             else
             {
-                if((nums[mid] < target) && (nums[r]>= target))
-                    l = mid + 1;
+                if((nums[mid] < target) && (nums[ei]>= target))
+                    si = mid + 1;
                 else
-                    r = mid - 1;
+                    ei = mid - 1;
             }
         }
         return false;
