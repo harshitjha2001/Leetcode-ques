@@ -5,11 +5,11 @@ public:
         
         for (int x: nums)
         {
-            if(x==0)
-               count=0;
+            if(x==1)
+               count++;
 
             else 
-               count++;
+               count=0;
             
             if(count>max)
                 max=count;
