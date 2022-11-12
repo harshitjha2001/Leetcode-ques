@@ -9,31 +9,48 @@ public:
 	int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
 	    // code here
 	    
-	    int currentsize =0;
-	    int biggestsize=0;
-	    int row = 0;
-	    int col = 0;
-	    int ans = -1;
-	    while(row < n && col <=m){
+	   // int currentsize =0;
+	   // int biggestsize=0;
+	   // int row = 0;
+	   // int col = 0;
+	   // int ans = -1;
+	   // while(row < n && col <=m){
 	        
-	        if(arr[row][m-1]==0)
-	            row++;
+	   //     if(arr[row][m-1]==0)
+	   //         row++;
 	            
-	        else if(arr[row][col]==1){
-	            currentsize=m-col;
-	            if(biggestsize<currentsize){
-	                biggestsize = currentsize;
-	               ans= row;
-	            }
-	            col=0;
-	            row++;
-	        }
+	   //     else if(arr[row][col]==1){
+	   //         currentsize=m-col;
+	   //         if(biggestsize<currentsize){
+	   //             biggestsize = currentsize;
+	   //            ans= row;
+	   //         }
+	   //         col=0;
+	   //         row++;
+	   //     }
 	        
-	        else{
-	            col++;
-	        }
-	    }
-	    return ans;
+	   //     else{
+	   //         col++;
+	   //     }
+	   // }
+	   // return ans;
+	   
+	   int row=0;
+	   int col=m-1;
+	   int ans=-1;
+	   while(row<n && col>=0)
+	   {
+	       if(arr[row][col]==1)
+	       {
+	           ans=row;
+	           col--;
+	       }
+	       
+	       else
+	        row++;
+	   }
+	   
+	   return ans;
 	}
 	
 
